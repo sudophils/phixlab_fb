@@ -6,8 +6,10 @@ const appBackgroundColor = Colors.white;
 const verticalSpacing = EdgeInsets.symmetric(vertical: defaultSpacer);
 const horizontalSpacing = EdgeInsets.symmetric(horizontal: defaultSpacer);
 
-Widget spaceWidget(
-    {required bool isFullSpace, required bool isVerticalSpace}) {
+const iconPath = "assets/icons/";
+const imagePath = "assets/images/";
+
+Widget spaceWidget({required bool isFullSpace, required bool isVerticalSpace}) {
   if (!isVerticalSpace) {
     return SizedBox(
       width: isFullSpace ? defaultSpacer : defaultSpacer / 2,
@@ -17,4 +19,3 @@ Widget spaceWidget(
     height: isFullSpace ? defaultSpacer : defaultSpacer / 2,
   );
 }
-

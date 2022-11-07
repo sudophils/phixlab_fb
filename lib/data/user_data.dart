@@ -5,7 +5,7 @@ class User {
   final String profilePhotoUrl;
   final List<Story>? stories;
   final List<Post>? posts;
-  final List<Reels>? reels;
+  final Reels? reels;
 
   const User({
     this.userId,
@@ -32,9 +32,10 @@ class Post {
   final String postContent;
   final int postLikeCount;
   final int postCommentCount;
+  final int shareCount;
 
   const Post(this.postPhoto, this.postContent, this.postLikeCount,
-      this.postCommentCount);
+      this.postCommentCount, this.shareCount);
 }
 
 class Reels {
