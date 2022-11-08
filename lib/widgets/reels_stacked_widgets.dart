@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:phixlab_fb/widgets/reels_floating_widget.dart';
+import 'package:unicons/unicons.dart';
 
 import '../utils/constants.dart';
 
 class ReelsStackWidget extends StatelessWidget {
-  const ReelsStackWidget({Key? key}) : super(key: key);
+  final String likes;
+  final String comments;
+  final String shares;
+
+  const ReelsStackWidget(
+      {Key? key,
+      required this.likes,
+      required this.comments,
+      required this.shares})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +30,17 @@ class ReelsStackWidget extends StatelessWidget {
     }
 
     return buildVerticalShareView([
-      const FloatingWidget(
-        icon: Icons.thumb_up_sharp,
-        label: "55k",
+      FloatingWidget(
+        icon: UniconsLine.thumbs_up,
+        label: likes,
       ),
-      const FloatingWidget(
-        icon: Icons.comment_bank,
-        label: "15k",
+      FloatingWidget(
+        icon: UniconsLine.comment,
+        label: comments,
       ),
-      const FloatingWidget(
-        icon: Icons.ios_share,
-        label: "2.6k",
+      FloatingWidget(
+        icon: UniconsLine.share,
+        label: shares,
       ),
       const FloatingWidget(icon: Icons.more_horiz),
       const FloatingWidget(icon: Icons.person),

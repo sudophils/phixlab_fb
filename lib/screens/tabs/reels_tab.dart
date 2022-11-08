@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../data/user_data.dart';
 import '../../utils/constants.dart';
 import '../../widgets/reels_comment_section.dart';
 import '../../widgets/reels_stacked_widgets.dart';
@@ -15,7 +16,7 @@ class RealContentTab extends StatelessWidget {
       errorBuilder: (context, _, st) {
         return Container(color: Colors.white);
       },
-      "https://cdn.pixabay.com/photo/2017/01/14/13/59/dock-1979547__340.jpg",
+      userData.reels!.first.videoUrl,
       fit: BoxFit.cover,
     ),
   );
@@ -41,8 +42,20 @@ class RealContentTab extends StatelessWidget {
           left: 0,
           child: ReelsTopUserActionWidget(),
         ),
-        const Positioned(right: 0, bottom: 20, child: ReelsStackWidget()),
-        const Positioned(bottom: 16, child: CommentSectionWidget())
+        Positioned(
+            right: 0,
+            bottom: 20,
+            child: ReelsStackWidget(
+              likes: '${userData.reels!.first.likeCount}k',
+              comments: '${userData.reels!.first.commentCount}k',
+              shares: '${userData.reels!.first.shareCount}k',
+            )),
+        Positioned(
+            bottom: 16,
+            child: CommentSectionWidget(
+              userName: userData.name,
+              userPhotoUrl: userData.profilePhotoUrl,
+            ))
       ],
     );
   }

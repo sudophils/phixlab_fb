@@ -4,7 +4,12 @@ import 'package:phixlab_fb/widgets/user_avatar_widget.dart';
 import '../utils/constants.dart';
 
 class CommentSectionWidget extends StatelessWidget {
-  const CommentSectionWidget({Key? key}) : super(key: key);
+  final String userName;
+  final String userPhotoUrl;
+
+  const CommentSectionWidget(
+      {Key? key, required this.userName, required this.userPhotoUrl})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,15 +18,14 @@ class CommentSectionWidget extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: defaultSpacer),
         child: Row(
           children: [
-            const Expanded(
+            Expanded(
               flex: 1,
               child: Padding(
-                padding: EdgeInsets.only(right: 8.0),
+                padding: const EdgeInsets.only(right: 8.0),
                 child: CircleAvatar(
                   radius: 18,
                   child: PhotoAvatarWidget(
-                    photoUrl:
-                        'https://cdn.pixabay.com/photo/2022/04/29/14/28/woman-7163866__480.jpg',
+                    photoUrl: userPhotoUrl,
                   ),
                 ),
               ),
@@ -32,20 +36,25 @@ class CommentSectionWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
-                    children: const [
+                    children: [
                       Text(
-                        "phixlab .  ",
-                        style: TextStyle(
+                        "$userName .  ",
+                        style: const TextStyle(
                             color: Colors.white,
                             fontSize: 15,
                             fontWeight: FontWeight.w600),
                       ),
-                      Text(
-                        "Follow",
-                        style: TextStyle(
-                            color: Colors.blueAccent,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600),
+                      InkWell(
+                        onTap: () {
+                          debugPrint("followed $userName");
+                        },
+                        child: const Text(
+                          "Follow",
+                          style: TextStyle(
+                              color: Colors.blueAccent,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600),
+                        ),
                       ),
                     ],
                   ),

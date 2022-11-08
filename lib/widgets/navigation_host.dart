@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:phixlab_fb/screens/tabs/reels_tab.dart';
 import 'package:phixlab_fb/utils/constants.dart';
 
+import '../data/user_data.dart';
 import '../screens/tabs/feeds_tab.dart';
 
 class FacebookAppNavigationHost extends StatefulWidget {
@@ -67,7 +68,7 @@ class _FacebookAppNavigationHostState extends State<FacebookAppNavigationHost>
                   },
                   height: 36,
                   width: 36,
-                  'https://cdn.pixabay.com/photo/2022/04/29/14/28/woman-7163866__480.jpg',
+                  userData.profilePhotoUrl,
                   fit: BoxFit.cover,
                 ),
               ),
