@@ -58,20 +58,37 @@ class _FacebookAppNavigationHostState extends State<FacebookAppNavigationHost>
             child: Icon(CupertinoIcons.search),
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: CircleAvatar(
-              radius: 18,
-              child: ClipOval(
-                child: Image.network(
-                  errorBuilder: (context, _, st) {
-                    return const CircleAvatar(backgroundColor: Colors.white);
-                  },
-                  height: 36,
-                  width: 36,
-                  userData.profilePhotoUrl,
-                  fit: BoxFit.cover,
+            padding: const EdgeInsets.only(right: 8.0, top: 8),
+            child: Stack(
+              children: [
+                CircleAvatar(
+                  radius: 18,
+                  child: ClipOval(
+                    child: Image.network(
+                      errorBuilder: (context, _, st) {
+                        return const CircleAvatar(
+                            backgroundColor: Colors.white);
+                      },
+                      height: 36,
+                      width: 36,
+                      userData.profilePhotoUrl,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
-              ),
+                if (userData.isOnline!)
+                  Positioned(
+                    right: 4,
+                    bottom: 10,
+                    child: Container(
+                      width: 7,
+                      height: 7,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          color: Colors.green),
+                    ),
+                  )
+              ],
             ),
           ),
         ],

@@ -3,7 +3,6 @@ import 'package:phixlab_fb/data/user_data.dart';
 import 'package:phixlab_fb/utils/constants.dart';
 import 'package:unicons/unicons.dart';
 
-import '../../widgets/feed_social_icon.dart';
 import '../../widgets/post_card.dart';
 import '../../widgets/user_avatar_widget.dart';
 
@@ -29,6 +28,7 @@ class FeedContentTab extends StatelessWidget {
                 child: SizedBox(
                   height: 34,
                   child: TextField(
+                    style: TextStyle(fontSize: 11),
                     decoration: InputDecoration(
                         suffixIcon: Icon(
                           Icons.photo_library,
@@ -37,6 +37,13 @@ class FeedContentTab extends StatelessWidget {
                         isDense: true,
                         hintStyle:
                             TextStyle(color: Colors.black54, fontSize: 10),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors.black26,
+                                style: BorderStyle.solid,
+                                width: 1),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(50))),
                         enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                                 color: Colors.black12,
@@ -72,15 +79,18 @@ class FeedContentTab extends StatelessWidget {
               shrinkWrap: true,
               children: [
                 spaceWidget(isFullSpace: true, isVerticalSpace: false),
-                ...?userData.stories?.map((story) => Padding(
-                      padding:
-                          const EdgeInsets.only(right: defaultSpacer / 2),
-                      child: PhotoAvatarWidget(
-                        height: 55,
-                        width: 55,
-                        photoUrl: story.storyPhoto,
-                      ),
-                    )),
+                ...?userData.stories?.map((story) {
+                  return Padding(
+                    padding: const EdgeInsets.only(right: defaultSpacer / 2),
+                    child: StoryAvatarWidget(
+                      profilePhotoUrl: story.profilePhotoUrl,
+                      viewed: story.viewed,
+                      height: 55,
+                      width: 55,
+                      storyphotoUrl: story.storyPhoto,
+                    ),
+                  );
+                }),
                 spaceWidget(isFullSpace: false, isVerticalSpace: false),
               ],
             ),
